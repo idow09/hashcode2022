@@ -30,6 +30,9 @@ class Solver:
     @staticmethod
     def solve(input_problem: ProblemInput) -> ProblemOutput:
         skill2persons = get_skill2persons(input_problem)
+        for project in input_problem.projects:
+            for role in project.roles.values():
+                candidates = find_candidates(role, skill2persons)
         return ProblemOutput({})
 
     @staticmethod
