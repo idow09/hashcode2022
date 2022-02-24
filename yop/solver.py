@@ -40,7 +40,7 @@ class Solver:
         projects = list(self.problem_input.projects.values())
         skill2persons = deepcopy(self.skill2persons)
         project_name2day_and_persons = {}
-        for t in range(int(10e5)):
+        for t in range(int(10e4)):
             project_name2day_and_persons_ = self.get_alloc(t, projects, skill2persons)
             project_name2day_and_persons.update(**project_name2day_and_persons_)
             for p in self.name2busy.keys():
