@@ -4,7 +4,7 @@ from pathlib import Path
 
 from yop.parser import dump, load
 from yop.scorer import Scorer
-from yop.solver import Solver, BaselineSolver
+from yop.solver import Solver
 
 DATA_ROOT = Path('data')
 DEBUG_MODE = False
