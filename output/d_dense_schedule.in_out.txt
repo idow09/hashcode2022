@@ -1,15 +1,11 @@
-7
+5
 LearnProv8
 JenI
 StreetViewXv2
 StepanJ PrzemekF HiroshiS
-BloggerProv9
-ThomasE
-SheetsZv4
-FionaS SergeyR
 FinanceXv5
 HiroshiU
 MoonXv3
 MaxR PetarM
-CurrentsXv1
-MaxP
+CodeZv4
+PhilippR LarryM
