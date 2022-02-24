@@ -32,7 +32,7 @@ def load(file, mock=False) -> ProblemInput:
         project = Project(project_name, D, S, B, roles)
         projects.append(project)
 
-    return ProblemInput()
+    return ProblemInput(persons, projects)
 
 
 def _load_mock():
