@@ -51,7 +51,6 @@ def main():
     for path in input_paths:
         problem_input = read_input(path)
 
-        parameters = {}
         problem_output = Solver(problem_input).solve()
         print(f'Score for {path.stem} is: {Scorer().score(problem_input, problem_output)}')
 

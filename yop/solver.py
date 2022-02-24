@@ -10,12 +10,13 @@ def calc_fitness(person: Person, role: Skill):
     return diff
 
 
-def find_candidates(role: Skill, skill2persons):
+def find_candidates(role: Skill, skill2persons, name2availability):
     persons: List[Person] = skill2persons[role.name]
     fitness = [calc_fitness(person, role) for person in persons]
     fitness_and_persons = [(f, p) for f, p in zip(fitness, persons) if f >= 0]
-    fitness_and_persons = [p for _, p in sorted(fitness_and_persons, key=lambda f_and_p: f_and_p[0])]
-    return fitness_and_persons
+    persons_ = [p for _, p in sorted(fitness_and_persons, key=lambda f_and_p: f_and_p[0])]
+    persons_ = [person for person in persons_ if name2availability[person.name]]
+    return persons_
 
 
 def get_skill2persons(input_problem: ProblemInput):
@@ -46,15 +47,13 @@ class Solver:
         project_persons = []
 
         for role in project.roles.values():
-            candidates = find_candidates(role, self.skill2persons)
+            candidates = find_candidates(role, self.skill2persons, self.name2availability)
             if len(candidates) == 0:
                 return None
-            for candidate in candidates:
-                if self.name2availability[candidate.name]:
-                    project_persons.append(candidate)
-                    self.name2availability[candidate.name] = False
-                    break
-            else:
-                return None
+            candidate = candidates[0]
+            project_persons.append(candidate)
+            self.name2availability[candidate.name] = False
 
+        if len(project_persons) < len(project.roles):
+            return None
         return project_persons
