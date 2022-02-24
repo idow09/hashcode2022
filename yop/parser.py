@@ -7,8 +7,8 @@ def load(file, mock=False) -> ProblemInput:
     if mock:
         return _load_mock()
     lines: List[str] = file.readlines()
-    C = int(lines.pop(0))
-    P = int(lines.pop(0))
+    C, P = lines.pop(0).split()
+    C, P = int(C), int(P)
     persons = []
     for _ in range(C):
         person_name, N = lines.pop(0).split()
