@@ -1,4 +1,5 @@
 from yop.objects import Project
+from typing import List
 
 
 def get_project_value(proj: Project, start_day: int):
@@ -15,3 +16,6 @@ def get_project_value(proj: Project, start_day: int):
         proj_score = proj.score - diff_due_to_best_before
 
     return ((proj_score * 1000) / (roles_total_size * proj.duration))
+
+def order_projects_by_priority(project_list: List[Project]):
+    pass
