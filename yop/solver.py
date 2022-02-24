@@ -32,6 +32,7 @@ class Solver:
         self.problem_input = problem_input
         self.skill2persons = get_skill2persons(self.problem_input)
         self.name2availability = {person.name: True for person in problem_input.persons}
+        self.t = 0
 
     def solve(self) -> ProblemOutput:
         projects = order_projects_by_priority(list(self.problem_input.projects.values()))
