@@ -31,7 +31,7 @@ class Solver:
     def __init__(self, problem_input: ProblemInput):
         self.problem_input = problem_input
         self.skill2persons = get_skill2persons(self.problem_input)
-        self.name2busy = {person.name: [] for person in problem_input.persons}
+        self.name2busy = {person.name: True for person in problem_input.persons}
         self.t = 0
 
     def solve(self) -> ProblemOutput:
@@ -53,7 +53,8 @@ class Solver:
                 return None
             candidate = candidates[0]
             project_persons.append(candidate)
-            self.name2busy[candidate.name].append((t, project.duration))
+            self.name2busy[candidate.name] = False
+            # self.name2busy[candidate.name].append((t, project.duration))
 
         if len(project_persons) < len(project.roles):
             return None
