@@ -26,7 +26,7 @@ class Person:
 @dataclass
 class ProblemInput:
     persons: List[Person]
-    projects: List[Project]
+    projects: OrderedDict[str, Project]
 
 
 @dataclass

@@ -21,7 +21,7 @@ def load(file, mock=False) -> ProblemInput:
             skill_name2skills[skill_name] = Skill(skill_name, skill_level)
         person = Person(person_name, skill_name2skills)
         persons.append(person)
-    projects = []
+    projects = OrderedDict()
     for _ in range(P):
         project_name, D, S, B, R = lines.pop(0).split()
         D, S, B, R = int(D), int(S), int(B), int(R)
@@ -31,7 +31,7 @@ def load(file, mock=False) -> ProblemInput:
             skill_level = int(skill_level)
             role_name2roles[skill_name] = Skill(skill_name, skill_level)
         project = Project(project_name, D, S, B, role_name2roles)
-        projects.append(project)
+        projects[project_name] = project
 
     return ProblemInput(persons, projects)
 

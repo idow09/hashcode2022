@@ -33,7 +33,7 @@ class Solver:
 
     def solve(self) -> ProblemOutput:
         project_name2day_and_persons = {}
-        for project in self.problem_input.projects:
+        for project in self.problem_input.projects.values():
             persons = self.attach_persons_to_project(project)
             project_name2day_and_persons[project.name] = (0, persons)
         return ProblemOutput(project_name2day_and_persons)
