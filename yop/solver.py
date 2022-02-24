@@ -12,13 +12,14 @@ class Solver:
         
     @staticmethod
     def attach_persons_to_project(persons, project):
-        # output_persons = []
+        output_persons = []
         # diffs_persons = {}
         
         # for role in project.roles:
             # for person in persons:
                 # diff = diff_person_level_to_role_level(person, role)
                 
+        return output_persons
         
     @staticmethod
     def diff_person_level_to_role_level(person, role):
