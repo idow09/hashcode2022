@@ -16,7 +16,7 @@ def find_candidates(role: Skill, skill2persons, name2busy, t):
     fitness = [calc_fitness(person, role) for person in persons]
     fitness_and_persons = [(f, p) for f, p in zip(fitness, persons) if f >= 0]
     persons_ = [p for _, p in sorted(fitness_and_persons, key=lambda f_and_p: f_and_p[0])]
-    persons_ = [person for person in persons_ if name2busy[person.name] is not None]
+    persons_ = [person for person in persons_ if name2busy[person.name] is None]
     return persons_
 
 
