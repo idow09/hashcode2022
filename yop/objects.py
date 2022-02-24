@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Tuple
 
 
+@dataclass
 class Skill:
     name: str
     level: int
