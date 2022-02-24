@@ -7,15 +7,24 @@ class ProblemInput:
     pass
 
 
+class Skill:
+    name: str
+    level: int
+
 
 @dataclass
 class Project:
-    pass
+    name: str
+    duration: int
+    score: int
+    best_before: int
+    roles: List[Skill]
 
 
 @dataclass
 class Person:
-    pass
+    name: str
+    skills: List[Skill]
 
 
 @dataclass
