@@ -17,6 +17,7 @@ def get_project_value(proj: Project, start_day: int):
 
     return ((proj_score * 1000) / (roles_total_size * proj.duration))
 
+
 def order_projects_by_priority(project_list: List[Project]):
     result = []
     for proj in project_list:

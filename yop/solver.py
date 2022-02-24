@@ -42,14 +42,18 @@ class Solver:
         return ProblemOutput(project_name2day_and_persons)
 
     def attach_persons_to_project(self, project):
-        output_persons = []
+        project_persons = []
 
         for role in project.roles.values():
             candidates = find_candidates(role, self.skill2persons)
             if len(candidates) == 0:
                 return None
-            person = candidates[0]
-            output_persons.append(person)
-            self.name2availability[person.name] = False
+            for candidate in candidates:
+                if self.name2availability[candidate.name]:
+                    project_persons.append(candidate)
+                    self.name2availability[candidate.name] = False
+                    break
+            else:
+                return None
 
-        return output_persons
+        return project_persons
