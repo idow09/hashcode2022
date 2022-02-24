@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from typing import Optional, TextIO, List
 
 from yop.objects import ProblemInput, ProblemOutput, Skill, Person, Project
@@ -24,12 +25,12 @@ def load(file, mock=False) -> ProblemInput:
     for _ in range(P):
         project_name, D, S, B, R = lines.pop(0).split()
         D, S, B, R = int(D), int(S), int(B), int(R)
-        roles = []
+        role_name2roles = OrderedDict()
         for _ in range(R):
             skill_name, skill_level = lines.pop(0).split()
             skill_level = int(skill_level)
-            roles.append(Skill(skill_name, skill_level))
-        project = Project(project_name, D, S, B, roles)
+            role_name2roles[skill_name] = Skill(skill_name, skill_level)
+        project = Project(project_name, D, S, B, role_name2roles)
         projects.append(project)
 
     return ProblemInput(persons, projects)

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, OrderedDict
 
 
 @dataclass
@@ -14,7 +14,7 @@ class Project:
     duration: int
     score: int
     best_before: int
-    roles: List[Skill]
+    roles: OrderedDict[str, Skill]
 
 
 @dataclass
