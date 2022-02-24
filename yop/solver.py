@@ -13,7 +13,7 @@ def find_candidates(role: Skill, skill2persons):
     persons: List[Person] = skill2persons[role.name]
     fitness = [calc_fitness(person, role) for person in persons]
     fitness_and_persons = [(f, p) for f, p in zip(fitness, persons) if f >= 0]
-    fitness_and_persons = [p for _, p in sorted(fitness_and_persons)]
+    fitness_and_persons = [p for _, p in sorted(fitness_and_persons, key=lambda f_and_p: f_and_p[0])]
     return fitness_and_persons
 
 
