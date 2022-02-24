@@ -31,4 +31,4 @@ class ProblemInput:
 
 @dataclass
 class ProblemOutput:
-    project_name2day_and_persons: Dict[Project, Tuple[int, List[Person]]]
+    project_name2day_and_persons: Dict[str, Tuple[int, List[Person]]]

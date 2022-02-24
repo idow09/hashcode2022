@@ -52,7 +52,7 @@ def main():
         problem_input = read_input(path)
 
         parameters = {}
-        problem_output = Solver(**parameters).solve(problem_input)
+        problem_output = Solver(problem_input).solve()
         print(f'Score for {path.stem} is: {Scorer().score(problem_input, problem_output)}')
 
         data_out_path = DATA_ROOT / 'output' / f'{path.stem}_out.txt'

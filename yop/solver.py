@@ -26,26 +26,27 @@ def get_skill2persons(input_problem: ProblemInput):
 
 
 class Solver:
-    def __init__(self):
-        pass
+    def __init__(self, problem_input: ProblemInput):
+        self.problem_input = problem_input
+        self.skill2persons = get_skill2persons(self.problem_input)
+        self.name2availability = {person.name: True for person in problem_input.persons}
 
-    @staticmethod
-    def solve(input_problem: ProblemInput) -> ProblemOutput:
-        skill2persons = get_skill2persons(input_problem)
-        
-        for project in input_problem.projects:
-            
-            for role in project.roles.values():
-                candidates = find_candidates(role, skill2persons)
-                print(candidates)
-        return ProblemOutput({})
+    def solve(self) -> ProblemOutput:
+        project_name2day_and_persons = {}
+        for project in self.problem_input.projects:
+            persons = self.attach_persons_to_project(project)
+            project_name2day_and_persons[project.name] = (0, persons)
+        return ProblemOutput(project_name2day_and_persons)
 
-    @staticmethod
-    def attach_persons_to_project(persons, project):
+    def attach_persons_to_project(self, project):
         output_persons = []
-        candidates = find_candidates(role, skill2persons)
-        
+
         for role in project.roles:
-            output_persons.append(find_candidates(role, skill2persons)[0])
-            
+            candidates = find_candidates(role, self.skill2persons)
+            if len(candidates) == 0:
+                return None
+            person = candidates[0]
+            output_persons.append(person)
+            self.name2availability[person.name] = False
+
         return output_persons
