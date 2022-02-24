@@ -7,8 +7,8 @@ def load(file, mock=False) -> ProblemInput:
     if mock:
         return _load_mock()
     lines: List[str] = file.readlines()
-    C = int(lines.pop(0))
-    P = int(lines.pop(0))
+    C, P = lines.pop(0).split()
+    C, P = int(C), int(P)
     persons = []
     for _ in range(C):
         person_name, N = lines.pop(0).split()
@@ -46,6 +46,9 @@ def dump(output: ProblemOutput, file=Optional[TextIO]):
         else:
             print(string, end='')
 
-    write(f'')
-    for each in output.something:
-        write(f'{each}\n')
+    write(f'{len(output.project_name2day_and_persons)}\n')
+    for project_name, day_and_persons in output.project_name2day_and_persons.items():
+        day, persons = day_and_persons
+        write(f'{project_name}\n')
+        person_names = [person.name for person in persons]
+        write(f'{" ".join(person_names)}\n')

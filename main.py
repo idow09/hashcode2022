@@ -8,7 +8,7 @@ from yop.solver import Solver
 
 DATA_ROOT = Path('.')
 DEBUG_MODE = False
-# INPUT_FILES = ['e.txt']
+# INPUT_FILES = ['a_an_example.in.txt']
 INPUT_FILES = None
 
 
