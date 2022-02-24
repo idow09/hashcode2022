@@ -35,7 +35,8 @@ class Solver:
         project_name2day_and_persons = {}
         for project in self.problem_input.projects.values():
             persons = self.attach_persons_to_project(project)
-            project_name2day_and_persons[project.name] = (0, persons)
+            if persons is not None:
+                project_name2day_and_persons[project.name] = (0, persons)
         return ProblemOutput(project_name2day_and_persons)
 
     def attach_persons_to_project(self, project):
