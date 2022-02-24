@@ -7,6 +7,7 @@ class Solver:
 
     @staticmethod
     def solve(input_problem: ProblemInput) -> ProblemOutput:
+
         return ProblemOutput({})
         
     @staticmethod
