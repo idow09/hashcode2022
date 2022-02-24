@@ -7,7 +7,7 @@ class Solver:
 
     @staticmethod
     def solve(input_problem: ProblemInput) -> ProblemOutput:
-        return ProblemOutput()
+        return ProblemOutput({})
         
         
     @staticmethod
@@ -16,4 +16,3 @@ class Solver:
             if per_skill.name == role.name:
                 return per_skill.level - role.level
         return -10
-            
