@@ -10,7 +10,7 @@ def get_project_value(proj: Project, start_day: int):
     if proj.best_before > (start_day + proj.duration):
         diff_due_to_best_before = 0
     else:
-        (start_day + proj.duration) - proj.best_before
+        diff_due_to_best_before = (start_day + proj.duration) - proj.best_before
     proj_score = 0
     if proj.score > diff_due_to_best_before:
         proj_score = proj.score - diff_due_to_best_before
