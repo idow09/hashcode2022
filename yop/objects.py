@@ -2,11 +2,6 @@ from dataclasses import dataclass
 from typing import List, Dict, Tuple
 
 
-@dataclass
-class ProblemInput:
-    pass
-
-
 class Skill:
     name: str
     level: int
@@ -25,6 +20,12 @@ class Project:
 class Person:
     name: str
     skills: List[Skill]
+
+
+@dataclass
+class ProblemInput:
+    persons: List[Person]
+    projects: List[Project]
 
 
 @dataclass
