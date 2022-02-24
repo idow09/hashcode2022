@@ -45,7 +45,8 @@ def dump(output: ProblemOutput, file=Optional[TextIO]):
         if file:
             file.write(string)
         else:
-            print(string, end='')
+            pass
+            #print(string, end='')
 
     write(f'{len(output.project_name2day_and_persons)}\n')
     for project_name, day_and_persons in output.project_name2day_and_persons.items():
