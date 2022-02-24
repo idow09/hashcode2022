@@ -50,7 +50,7 @@ def dump(output: ProblemOutput, file=Optional[TextIO]):
 
     write(f'{len(output.project_name2day_and_persons)}\n')
     for project_name, day_and_persons in output.project_name2day_and_persons.items():
-        day, persons = day_and_persons
+        unused_day, persons = day_and_persons
         write(f'{project_name}\n')
         person_names = [person.name for person in persons]
         write(f'{" ".join(person_names)}\n')
