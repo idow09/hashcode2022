@@ -30,7 +30,9 @@ class Solver:
     @staticmethod
     def solve(input_problem: ProblemInput) -> ProblemOutput:
         skill2persons = get_skill2persons(input_problem)
+        
         for project in input_problem.projects:
+            
             for role in project.roles.values():
                 candidates = find_candidates(role, skill2persons)
         return ProblemOutput({})
@@ -38,18 +40,9 @@ class Solver:
     @staticmethod
     def attach_persons_to_project(persons, project):
         output_persons = []
-        #prioritized_persons 
-        # diffs_persons = {}
-
-        # for role in project.roles:
-        # for person in persons:
-        # diff = diff_person_level_to_role_level(person, role)
-
+        candidates = find_candidates(role, skill2persons)
+        
+        for role in project.roles:
+            output_persons.append(find_candidates(role, skill2persons)[0])
+            
         return output_persons
-
-    @staticmethod
-    def diff_person_level_to_role_level(person, role):
-        for per_skill in person.skills:
-            if per_skill.name == role.name:
-                return per_skill.level - role.level
-        return -10
