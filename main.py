@@ -6,7 +6,7 @@ from yop.parser import dump, load
 from yop.scorer import Scorer
 from yop.solver import Solver
 
-DATA_ROOT = Path('data')
+DATA_ROOT = Path('.')
 DEBUG_MODE = False
 # INPUT_FILES = ['e.txt']
 INPUT_FILES = None
