@@ -22,4 +22,4 @@ def order_projects_by_priority(project_list: List[Project]):
     result = []
     for proj in project_list:
         result.append((get_project_value(proj, 0), proj))
-    return sorted([proj for v, proj in result])
+    return [proj for v, proj in sorted(result, key=lambda v_and_p: v_and_p[0])]
