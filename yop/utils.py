@@ -6,7 +6,7 @@ def get_project_value(proj: Project, start_day: int):
     roles_total_size = 0
     for i in proj.roles:
         roles_total_size += i.level
-    if proj.best_before > (start_day + proj.duration):
+    if proj.best_before > (start_day + proj.duration - 1):
         diff_due_to_best_before = 0
     else:
         diff_due_to_best_before = (start_day + proj.duration) - proj.best_before
@@ -14,7 +14,7 @@ def get_project_value(proj: Project, start_day: int):
     if proj.score > diff_due_to_best_before:
         proj_score = proj.score - diff_due_to_best_before
 
-    return (proj_score * 1000) / (roles_total_size * proj.duration)
+    return (proj_score * 1000) / (proj.duration)
 
 
 def order_projects_by_priority(project_list: List[Project]):
