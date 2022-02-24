@@ -4,7 +4,7 @@ from typing import List
 
 def get_project_value(proj: Project, start_day: int):
     roles_total_size = 0
-    for i in proj.roles:
+    for i in proj.roles.values():
         roles_total_size += i.level
     diff_due_to_best_before = 0
     if proj.best_before > (start_day + proj.duration):
