@@ -14,12 +14,12 @@ def load(file, mock=False) -> ProblemInput:
     for _ in range(C):
         person_name, N = lines.pop(0).split()
         N = int(N)
-        skills = []
+        skill_name2skills = OrderedDict()
         for _ in range(N):
             skill_name, skill_level = lines.pop(0).split()
             skill_level = int(skill_level)
-            skills.append(Skill(skill_name, skill_level))
-        person = Person(person_name, skills)
+            skill_name2skills[skill_name] = Skill(skill_name, skill_level)
+        person = Person(person_name, skill_name2skills)
         persons.append(person)
     projects = []
     for _ in range(P):

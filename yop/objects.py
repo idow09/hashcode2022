@@ -20,7 +20,7 @@ class Project:
 @dataclass
 class Person:
     name: str
-    skills: List[Skill]
+    skills: OrderedDict[str, Skill]
 
 
 @dataclass
