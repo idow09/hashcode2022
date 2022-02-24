@@ -31,7 +31,7 @@ class Solver:
     def __init__(self, problem_input: ProblemInput):
         self.problem_input = problem_input
         self.skill2persons = get_skill2persons(self.problem_input)
-        self.name2availability = {person.name: True for person in problem_input.persons}
+        self.name2busy = {person.name: [] for person in problem_input.persons}
         self.t = 0
 
     def solve(self) -> ProblemOutput:
@@ -39,21 +39,21 @@ class Solver:
 
         project_name2day_and_persons = {}
         for project in projects:
-            persons = self.attach_persons_to_project(project)
+            persons = self.attach_persons_to_project(project, self.t)
             if persons is not None:
                 project_name2day_and_persons[project.name] = (0, persons)
         return ProblemOutput(project_name2day_and_persons)
 
-    def attach_persons_to_project(self, project):
+    def attach_persons_to_project(self, project, t):
         project_persons = []
 
-        for role in project.roles.values():
-            candidates = find_candidates(role, self.skill2persons, self.name2availability)
+        for role in project.roles:
+            candidates = find_candidates(role, self.skill2persons, self.name2busy)
             if len(candidates) == 0:
                 return None
             candidate = candidates[0]
             project_persons.append(candidate)
-            self.name2availability[candidate.name] = False
+            self.name2busy[candidate.name].append((t, project.duration))
 
         if len(project_persons) < len(project.roles):
             return None

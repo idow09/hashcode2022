@@ -25,11 +25,11 @@ def load(file, mock=False) -> ProblemInput:
     for _ in range(P):
         project_name, D, S, B, R = lines.pop(0).split()
         D, S, B, R = int(D), int(S), int(B), int(R)
-        role_name2roles = OrderedDict()
+        role_name2roles = []
         for _ in range(R):
             skill_name, skill_level = lines.pop(0).split()
             skill_level = int(skill_level)
-            role_name2roles[skill_name] = Skill(skill_name, skill_level)
+            role_name2roles.append(Skill(skill_name, skill_level))
         project = Project(project_name, D, S, B, role_name2roles)
         projects[project_name] = project
 
@@ -46,7 +46,7 @@ def dump(output: ProblemOutput, file=Optional[TextIO]):
             file.write(string)
         else:
             pass
-            #print(string, end='')
+            # print(string, end='')
 
     write(f'{len(output.project_name2day_and_persons)}\n')
     for project_name, day_and_persons in output.project_name2day_and_persons.items():

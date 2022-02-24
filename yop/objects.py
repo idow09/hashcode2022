@@ -14,7 +14,7 @@ class Project:
     duration: int
     score: int
     best_before: int
-    roles: OrderedDict[str, Skill]
+    roles: List[Skill]
 
 
 @dataclass
