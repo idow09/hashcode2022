@@ -12,7 +12,9 @@ def calc_fitness(person: Person, role: Skill):
 def find_candidates(role: Skill, skill2persons):
     persons: List[Person] = skill2persons[role.name]
     fitness = [calc_fitness(person, role) for person in persons]
-    return [p for _, p in sorted(zip(fitness, persons))]
+    fitness_and_persons = [(f, p) for f, p in zip(fitness, persons) if f >= 0]
+    fitness_and_persons = [p for _, p in sorted(fitness_and_persons)]
+    return fitness_and_persons
 
 
 def get_skill2persons(input_problem: ProblemInput):
@@ -35,6 +37,7 @@ class Solver:
             
             for role in project.roles.values():
                 candidates = find_candidates(role, skill2persons)
+                print(candidates)
         return ProblemOutput({})
 
     @staticmethod
