@@ -6,6 +6,7 @@ class ProblemInput:
     pass
 
 
+
 @dataclass
 class ProblemOutput:
     pass
