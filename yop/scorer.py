@@ -13,3 +13,4 @@ class Scorer:
             self.update_skills(proj, assign[1])
 
         print("total result is: {0}".format(result))
+        return result
