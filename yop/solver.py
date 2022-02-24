@@ -33,7 +33,8 @@ class Solver:
         self.name2availability = {person.name: True for person in problem_input.persons}
 
     def solve(self) -> ProblemOutput:
-        projects = order_projects_by_priority(self.problem_input.projects.values())
+        projects = order_projects_by_priority(list(self.problem_input.projects.values()))
+
         project_name2day_and_persons = {}
         for project in projects:
             persons = self.attach_persons_to_project(project)
