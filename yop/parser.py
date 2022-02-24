@@ -1,6 +1,6 @@
 from typing import Optional, TextIO, List
 
-from yop.objects import ProblemInput, ProblemOutput
+from yop.objects import ProblemInput, ProblemOutput, Skill, Person, Project
 
 
 def load(file, mock=False) -> ProblemInput:
@@ -9,12 +9,28 @@ def load(file, mock=False) -> ProblemInput:
     lines: List[str] = file.readlines()
     C = int(lines.pop(0))
     P = int(lines.pop(0))
-    for i in range(C):
-        line = lines.pop(0)
-        name, N = line.split()
+    persons = []
+    for _ in range(C):
+        person_name, N = lines.pop(0).split()
         N = int(N)
-        for j in range(N):
-            pass
+        skills = []
+        for _ in range(N):
+            skill_name, skill_level = lines.pop(0).split()
+            skill_level = int(skill_level)
+            skills.append(Skill(skill_name, skill_level))
+        person = Person(person_name, skills)
+        persons.append(person)
+    projects = []
+    for _ in range(P):
+        project_name, D, S, B, R = lines.pop(0).split()
+        D, S, B, R = int(D), int(S), int(B), int(R)
+        roles = []
+        for _ in range(R):
+            skill_name, skill_level = lines.pop(0).split()
+            skill_level = int(skill_level)
+            roles.append(Skill(skill_name, skill_level))
+        project = Project(project_name, D, S, B, roles)
+        projects.append(project)
 
     return ProblemInput()
 
