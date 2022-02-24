@@ -41,7 +41,7 @@ class Solver:
     def attach_persons_to_project(self, project):
         output_persons = []
 
-        for role in project.roles:
+        for role in project.roles.values():
             candidates = find_candidates(role, self.skill2persons)
             if len(candidates) == 0:
                 return None
