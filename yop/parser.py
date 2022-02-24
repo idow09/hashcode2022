@@ -1,4 +1,4 @@
-from typing import Optional, TextIO
+from typing import Optional, TextIO, List
 
 from yop.objects import ProblemInput, ProblemOutput
 
@@ -6,7 +6,16 @@ from yop.objects import ProblemInput, ProblemOutput
 def load(file, mock=False) -> ProblemInput:
     if mock:
         return _load_mock()
-    lines = file.readlines()
+    lines: List[str] = file.readlines()
+    C = int(lines.pop(0))
+    P = int(lines.pop(0))
+    for i in range(C):
+        line = lines.pop(0)
+        name, N = line.split()
+        N = int(N)
+        for j in range(N):
+            pass
+
     return ProblemInput()
 
 
