@@ -40,7 +40,7 @@ class Solver:
         return ProblemOutput(project_name2day_and_persons)
 
     def attach_persons_to_project(self, project):
-        output_persons = []
+        project_persons = []
 
         for role in project.roles.values():
             candidates = find_candidates(role, self.skill2persons)
@@ -48,10 +48,10 @@ class Solver:
                 return None
             for candidate in candidates:
                 if self.name2availability[candidate.name]:
-                    output_persons.append(candidate)
+                    project_persons.append(candidate)
                     self.name2availability[candidate.name] = False
                     break
             else:
                 return None
 
-        return output_persons
+        return project_persons
